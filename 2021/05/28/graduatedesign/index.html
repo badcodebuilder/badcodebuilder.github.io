@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"badcodebuilder.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="写完毕设论文，一点小小的总结和建议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕业设计">
+<meta property="og:url" content="https://badcodebuilder.github.io/2021/05/28/graduatedesign/index.html">
+<meta property="og:site_name" content="废纸篓">
+<meta property="og:description" content="写完毕设论文，一点小小的总结和建议">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://badcodebuilder.github.io/2021/05/28/graduatedesign/beautifulqpsk.png">
+<meta property="og:image" content="https://badcodebuilder.github.io/2021/05/28/graduatedesign/qpsk216qam.png">
+<meta property="og:image" content="https://badcodebuilder.github.io/2021/05/28/graduatedesign/miaomiaomiao.png">
+<meta property="article:published_time" content="2021-05-28T02:54:46.000Z">
+<meta property="article:modified_time" content="2021-05-28T05:12:48.097Z">
+<meta property="article:author" content="BadCodeBuilder">
+<meta property="article:tag" content="毕业设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://badcodebuilder.github.io/2021/05/28/graduatedesign/beautifulqpsk.png">
+
+
+<link rel="canonical" href="https://badcodebuilder.github.io/2021/05/28/graduatedesign/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>毕业设计 | 废纸篓</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">废纸篓</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">亦余心之所善兮 虽九死其犹未悔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%95%E8%AE%BE%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">毕设内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%95%E8%AE%BE%E8%AE%BA%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">毕设论文</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">BadCodeBuilder</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/badcodebuilder" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;badcodebuilder" rel="noopener" target="_blank">GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/callmechinese@163.com" title="E-mail → callmechinese@163.com">E-mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://badcodebuilder.github.io/2021/05/28/graduatedesign/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="BadCodeBuilder">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="废纸篓">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          毕业设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-05-28 10:54:46 / 修改时间：13:12:48" itemprop="dateCreated datePublished" datetime="2021-05-28T10:54:46+08:00">2021-05-28</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">写完毕设论文，一点小小的总结和建议</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>毕设论文终于交上去了，简述一下毕设的内容以及总结的一些经验。</p>
+<h2 id="毕设内容">毕设内容</h2>
+<p>毕设做的是射频指纹相关的内容，射频指纹(Radio Frequency Fingerprint, RFF)是由于射频通信电路中电子元器件存在的物理偏差导致的射频信号与理想信号存在一定的偏差，这些偏差只与设备相关，因此识别出这些偏差就可以识别出设备。</p>
+<p>我的毕设就是在车联网环境下完成识别的任务。前人工作都基本是基于理想信道或者室内信道的射频指纹识别，我现在做的车联网环境没人做过，所以没什么好参考的方法，并且车联网环境和室内环境有所不同，多径、延时、多普勒都很严重，以至于我在某个论文里面看到“在xx论文中指出，在xx环境下实现射频指纹识别是不可行的”。反正至少我实验验证了这一点，星座图直接畸变，好看倒是挺好看的；解调之后QPSK变成16QAM，当场呆住；添加0频偏，估计出来1kHz。除此之外还有很多意想不到的惊喜，反正一上信道就不知道下一步会是什么惊喜的星座图了。</p>
+<img src="/2021/05/28/graduatedesign/beautifulqpsk.png" class="" width="500" title="Beautiful QPSK">
+<img src="/2021/05/28/graduatedesign/qpsk216qam.png" class="" width="500" title="Is this QPSK?">
+<p>有人说了，啊你不信道估计和均衡？这里非常想申明一点：<strong>射频指纹是提取信号特征，不是恢复信号</strong>，所以不能用太强的估计和均衡，STA估计、CDP估计都已经上过了，设备指纹直接给你消的检测不到，只能用最原始的LS估计，然后面对快时变信道。emm估计不估计也差不了多少吧。</p>
+<p>又有人说了，啊你这不搞个端到端？别骂了别骂了，已经在看<a target="_blank" rel="noopener" href="https://nndl.github.io/">NNDL</a>了，我要会调NN会是这个鬼样子？而且也没GPU给我用啊。</p>
+<p>最后只能弄了几个还能提取的特征送到MLP里面学习分类，结果想死的心都有了，二分类50%准确率，逗我呢。还能咋办，加信噪比啊，增大特征幅度啊。画假图是不可能画假图的，这辈子都不可能画假图的，<strong>可以结果不好，但是千万不要造假</strong>。然后老师跑过来安慰我说，毕设只是要你把学到的东西进行运用，结果好那是研究生毕设的问题。</p>
+<p>好在冷静下来了，不行，这个信道我必须得曝光你，怎么曝光呢？没有对比就没有伤害，我搞个稳定信道和你对比不就好了？正好论文里面有室内信道的参数，拿过来再跑一遍，准确率直接95%以上，那你没话说了吧，就是信道的锅（当然我的指纹鲁棒性也有大问题）。</p>
+<p>没来得及上硬件就提交论文定稿了，有点担心，毕竟任务书写的是要用到USRP的，希望到时候答辩老师不要太追问这个。</p>
+<h2 id="毕设论文">毕设论文</h2>
+<p>毕设论文一开始真的难受，要求最少15k字，我们专业还要40页以上，不知道写什么。不过现在明白了，不知道就写废话，只要写了就会灵感越来越多。</p>
+<p>关于论文，很重要的一点就是查重，大家也非常关心这个方面。我知网和维普（下称为离谱）各查了两次，知网1.4/0.5，离谱10.8/7.71，学院要求10%。总结一点吧，就是一定要自己手打，哪怕是拿着别人论文作为蓝本，也要自己一个字一个字的打。一个朋友，拿着上届学长传下来的论文，一顿复制（猜的，反正一下午从6k写到16k）和修改语序，送到知网43%，通宵一夜降重27%，再通宵半夜15%，离他们学院要求还差5%（不过学校用的维普，知网只是辅助，人家维普一遍7%，我酸了）。放一个我在离谱上查重片段的截图啊</p>
+<img src="/2021/05/28/graduatedesign/miaomiaomiao.png" class="" width="500" title="喵喵喵？">
+<p>我直接去搞材料了？难怪舍友说“世界真小”。</p>
+<p>至于说降重的办法，最好的办法就是删减了，降重就像降低盐水的含盐度，准确点说是降低NaCl水溶液中NaCl含量，当然你可以再添加水，但是你能保证加的是蒸馏水吗？说不定加的水更咸。现在可以直接用原力把NaCl吸出来，最保险。当然你要是能把NaCl变成MgCl2那是你强，我写了22k，从10.8%降到10%只要删200字。多写点总是有好处的。</p>
+<p>最后就是博客，知网离谱他们竟然收集CSDN这些东西！我原以为搞两句CSDN上面的东西不会出问题吧，直接给我标出来了，还有另外一个我自己写的片段也被标出来是CSDN上面的东西了，世界真小，感谢老铁与我心意相通。所以本着可持续发展的原则，我也不会在CSDN等上面写博客了，Github给了一个很好的环境，为什么不用呢？</p>
+<p>所以总结下来就是</p>
+<ol type="1">
+<li>一定要自己手敲不能复制</li>
+<li>删除是最好的降重方法，所以多写一点</li>
+<li>CSDN等互联网资源是会查重的，来Github呗</li>
+<li>（补充一点）专有名词识别技术很烂，大多数情况下被认为是抄袭，所以没必要就不要介绍英文全称了</li>
+</ol>
+<p>至于说应不应该查重，我没啥感觉，我查过的论文，重复率最高就是这次离谱的10.8%了</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>BadCodeBuilder
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://badcodebuilder.github.io/2021/05/28/graduatedesign/" title="毕业设计">https://badcodebuilder.github.io/2021/05/28/graduatedesign/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" rel="tag"># 毕业设计</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/12/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BadCodeBuilder</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>
