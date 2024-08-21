@@ -274,11 +274,15 @@
                 
                 <p>你说得对，但是 Hyper-V 是巨硬开发的一款本地虚拟机管理程序。</p>
 <span id="more"></span>
-
-<blockquote><p>许多虚拟化应用程序依赖于大多数新式处理器上可用的硬件虚拟化扩展。它包括 Intel VT-x 和 AMD-V。一次只能有一个软件组件使用此硬件。无法在虚拟化应用程序之间共享硬件。</p>
+<blockquote><p>许多虚拟化应用程序依赖于大多数新式处理器上可用的硬件虚拟化扩展。它包括
+Intel VT-x 和
+AMD-V。一次只能有一个软件组件使用此硬件。无法在虚拟化应用程序之间共享硬件。</p>
 <footer><strong>Microsoft</strong><cite><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v#cause">virtualization-apps-not-work-with-hyper-v</a></cite></footer></blockquote>
-
-<p>而形如 WSL、Docker 等应用都需要启用 Hyper-V 技术。因此，一旦需要使用虚拟机相关的虚拟化软件，例如：VirtualBox等，就无法使用<strong>硬件虚拟化扩展</strong>技术。当前 VirtualBox 等虚拟机软件会调用 Hyper-V 提供的虚拟化 API 来实现软件虚拟化，但是性能会大打折扣。所以为了性能，不得不向 Hyper-V 低头。</p>
+<p>而形如 WSL、Docker 等应用都需要启用 Hyper-V
+技术。因此，一旦需要使用虚拟机相关的虚拟化软件，例如：VirtualBox等，就无法使用<strong>硬件虚拟化扩展</strong>技术。当前
+VirtualBox 等虚拟机软件会调用 Hyper-V 提供的虚拟化 API
+来实现软件虚拟化，但是性能会大打折扣。所以为了性能，不得不向 Hyper-V
+低头。</p>
 <p>本系列记录了在探索 Hyper-V 过程中的一些值得记录的内容，不定期更新</p>
 
                 

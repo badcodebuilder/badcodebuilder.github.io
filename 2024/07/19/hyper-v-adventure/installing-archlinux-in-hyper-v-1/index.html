@@ -16,12 +16,12 @@
   <meta name="author" content="BadCodeBuilder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这既是一篇 Hyper-V 安装虚拟机的教程，也是一篇安装 Archlinux 的教程。">
+    <meta name="description" content="这既是一篇 Hyper-V 安装虚拟机的教程，也是一篇安装 Archlinux 的教程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在 Hyper-V 中安装 Archlinux（上）">
 <meta property="og:url" content="https://blog.bcb.pub/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/index.html">
 <meta property="og:site_name" content="BadCode">
-<meta property="og:description" content="这既是一篇 Hyper-V 安装虚拟机的教程，也是一篇安装 Archlinux 的教程。">
+<meta property="og:description" content="这既是一篇 Hyper-V 安装虚拟机的教程，也是一篇安装 Archlinux 的教程。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.bcb.pub/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-1.png">
 <meta property="og:image" content="https://blog.bcb.pub/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-1.png">
@@ -288,176 +288,217 @@
             
               <div class="markdown-body">
                 
-                <p>这既是一篇 Hyper-V 安装虚拟机的教程，也是一篇安装 Archlinux 的教程。</p>
+                <p>这既是一篇 Hyper-V 安装虚拟机的教程，也是一篇安装 Archlinux
+的教程。</p>
 <span id="more"></span>
-
-<p>Archlinux 向来以“难安装”著称，一直以来是我心头的白月光。曾经用 <a target="_blank" rel="noopener" href="https://github.com/arch-linux-gui">Arch Liunx GUI</a> 安装过一次并且用了很久，但是从命令行安装还真的没有完整尝试过，加之 Archlinux 在官方网站上提供了<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">安装指南</a>，所以再一次尝试一下 Archlinux 的安装。</p>
-<p>先去搞一个 <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/">Archlinux 镜像</a></p>
-<h2 id="创建与配置虚拟机"><a href="#创建与配置虚拟机" class="headerlink" title="创建与配置虚拟机"></a>创建与配置虚拟机</h2><h3 id="Hyper-V-管理器概览"><a href="#Hyper-V-管理器概览" class="headerlink" title="Hyper-V 管理器概览"></a>Hyper-V 管理器概览</h3><p>打开 <strong>Hyper-V 管理器</strong>，界面如图1-1所示</p>
+<p>Archlinux 向来以“难安装”著称，一直以来是我心头的白月光。曾经用 <a
+target="_blank" rel="noopener" href="https://github.com/arch-linux-gui">Arch Liunx GUI</a>
+安装过一次并且用了很久，但是从命令行安装还真的没有完整尝试过，加之
+Archlinux 在官方网站上提供了<a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">安装指南</a>，所以再一次尝试一下
+Archlinux 的安装。</p>
+<p>先去搞一个 <a
+target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/">Archlinux
+镜像</a></p>
+<h2 id="创建与配置虚拟机">创建与配置虚拟机</h2>
+<h3 id="hyper-v-管理器概览">Hyper-V 管理器概览</h3>
+<p>打开 <strong>Hyper-V 管理器</strong>，界面如图1-1所示</p>
 <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-1.png" srcset="/img/loading.gif" lazyload class="" title="Hyper-V 管理器界面">
-
 <p>可以看到界面除了菜单栏外主要分为左中右三栏</p>
 <ul>
-<li>左栏为 Hyper-V 管理服务器列表，可以添加远程管理器。图中只有本地 Hyper-V 管理器。</li>
-<li>中栏为当前管理器下管理的虚拟机，虚拟机的检查点（快照），虚拟机的详细信息等三行消息。图中可以看到已经有两个虚拟机 <code>i3wm-demo</code> 和 <code>mininet</code> 了（它们会在后面的文章中出现）。</li>
+<li>左栏为 Hyper-V 管理服务器列表，可以添加远程管理器。图中只有本地
+Hyper-V 管理器。</li>
+<li>中栏为当前管理器下管理的虚拟机，虚拟机的检查点（快照），虚拟机的详细信息等三行消息。图中可以看到已经有两个虚拟机
+<code>i3wm-demo</code> 和 <code>mininet</code>
+了（它们会在后面的文章中出现）。</li>
 <li>右栏为操作栏，对选定的虚拟机可以执行相应的操作。</li>
 </ul>
 <p>话不多说，我们开始吧。</p>
-<h3 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h3><ol>
+<h3 id="创建虚拟机">创建虚拟机</h3>
+<ol type="1">
 <li><p>在右栏中选择“新建→虚拟机→下一步”设置虚拟机名称和储存的位置，勾选“将虚拟机存储在其他位置”后可以选择一个C盘以外的位置（建议勾选，别把C盘撑爆）。如图1-2-1所示。</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-1.png" srcset="/img/loading.gif" lazyload class="" title="指定名称和位置">
-</li>
-<li><p>点击下一步，选择虚拟机版本，1代 Hyper-V 虚拟机显然是没二代好呀，选二代。如图1-2-2所示</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-2.png" srcset="/img/loading.gif" lazyload class="" title="选择虚拟机版本">
-</li>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-1.png" srcset="/img/loading.gif" lazyload class="" title="指定名称和位置"></p></li>
+<li><p>点击下一步，选择虚拟机版本，1代 Hyper-V
+虚拟机显然是没二代好呀，选二代。如图1-2-2所示</p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-2.png" srcset="/img/loading.gif" lazyload class="" title="选择虚拟机版本"></p></li>
 <li><p>点击下一步，设置虚拟机内存大小，这里我设置了6GB也就是6144MB内存。如图1-2-3所示</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-3.png" srcset="/img/loading.gif" lazyload class="" title="分配内存">
-</li>
-<li><p>点击下一步，设置虚拟机的网络。默认设置中，虚拟机存在一个网卡，在后面的设置中可以添加网卡。默认设置中只有 <code>Default Switch</code> 一个交换机，所以就连接到它。如图1-2-4所示</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-4.png" srcset="/img/loading.gif" lazyload class="" title="连接网卡">
-
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-3.png" srcset="/img/loading.gif" lazyload class="" title="分配内存"></p></li>
+<li><p>点击下一步，设置虚拟机的网络。默认设置中，虚拟机存在一个网卡，在后面的设置中可以添加网卡。默认设置中只有
+<code>Default Switch</code>
+一个交换机，所以就连接到它。如图1-2-4所示</p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-4.png" srcset="/img/loading.gif" lazyload class="" title="连接网卡"></p>
 <blockquote>
 <p>在后续的实验中，我们会创建新的交换机以及新的网卡来满足隔离、组网等需求。</p>
-</blockquote>
-</li>
+</blockquote></li>
 <li><p>点击下一步，创建虚拟磁盘，该磁盘就是虚拟机的磁盘了。默认名称和位置就好，改一下大小为32G，因为就是做实验嘛这么大够了，要是电脑存储不够，8G也能对付，再少就不太好了。如图1-2-5所示</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-5.png" srcset="/img/loading.gif" lazyload class="" title="创建虚拟磁盘">
-</li>
-<li><p>点击下一步，选择安装介质，这里就选择我们刚刚下载的 Archlinux 镜像。如图1-2-6所示。</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-6.png" srcset="/img/loading.gif" lazyload class="" title="选择安装介质"></li>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-5.png" srcset="/img/loading.gif" lazyload class="" title="创建虚拟磁盘"></p></li>
+<li><p>点击下一步，选择安装介质，这里就选择我们刚刚下载的 Archlinux
+镜像。如图1-2-6所示。</p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-2-6.png" srcset="/img/loading.gif" lazyload class="" title="选择安装介质"></p></li>
 </ol>
 <p>最后，点击“下一步→完成”即可完成虚拟创建。</p>
-<h3 id="设置虚拟机"><a href="#设置虚拟机" class="headerlink" title="设置虚拟机"></a>设置虚拟机</h3><p>你先别急，这里还需要几步配置才能启动虚拟机，不然后面有你急的</p>
-<ol>
-<li><p>中栏选中新创建的虚拟机 <code>archlinux-demo</code>，在右栏中选择设置，选择“安全”，取消“启用安全启动”的勾选，点击右下角“应用”保存设置。如图1-3所示</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-3.png" srcset="/img/loading.gif" lazyload class="" title="禁用安全启动">
-
+<h3 id="设置虚拟机">设置虚拟机</h3>
+<p>你先别急，这里还需要几步配置才能启动虚拟机，不然后面有你急的</p>
+<ol type="1">
+<li><p>中栏选中新创建的虚拟机
+<code>archlinux-demo</code>，在右栏中选择设置，选择“安全”，取消“启用安全启动”的勾选，点击右下角“应用”保存设置。如图1-3所示</p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig1-3.png" srcset="/img/loading.gif" lazyload class="" title="禁用安全启动"></p>
 <blockquote>
-<p>这是安装 Linux 系统需要的操作，至于安装 Windows 和 MacOS，以及启动 Linux系统是否可以打开，大家可以尝试一下</p>
-</blockquote>
-</li>
+<p>这是安装 Linux 系统需要的操作，至于安装 Windows 和 MacOS，以及启动
+Linux系统是否可以打开，大家可以尝试一下</p>
+</blockquote></li>
 </ol>
-<h2 id="安装-Archlinux"><a href="#安装-Archlinux" class="headerlink" title="安装 Archlinux"></a>安装 Archlinux</h2><p>Archlinux，启动！（并连接）</p>
-<p>Archlinux 安装的过程在<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">安装指南</a>及其附带的链接中有详细的叙述，但是文章过于冗长。本文着重记录其中的关键步骤，关键步骤按顺序包括：</p>
-<ol>
+<h2 id="安装-archlinux">安装 Archlinux</h2>
+<p>Archlinux，启动！（并连接）</p>
+<p>Archlinux 安装的过程在<a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">安装指南</a>及其附带的链接中有详细的叙述，但是文章过于冗长。本文着重记录其中的关键步骤，关键步骤按顺序包括：</p>
+<ol type="1">
 <li>连接互联网并更新系统时间</li>
 <li>创建并格式化硬盘分区</li>
 <li>设置镜像并安装系统</li>
 <li>配置系统</li>
 </ol>
-<h3 id="连接互联网并配置时间"><a href="#连接互联网并配置时间" class="headerlink" title="连接互联网并配置时间"></a>连接互联网并配置时间</h3><p>与 Ubuntu、Debian 的安装介质不同，Archlinux 安装光盘并不包含 Linux 系统的相关组件，所以需要从互联网下载，那么连接互联网是安装系统的基础。</p>
-<p>在物理机上连接互联网有时候并不是一件很轻松的事情，特别是当互联网服务需要 Web 认证的时候（校园网：报我身份证号得了）。然而在虚拟机中倒是相当简单，Hyper-V 的默认交换机提供了 NAT 功能，只需要虚拟机通过 DHCP 获取 IP 即可连接到互联网。而 Archlinux 安装系统在启动过程中就启动了 DHCP 服务器，所以一切都不用配置。如果不放心，可以使用 <code>ip link</code> 查看网卡的 IP 地址情况，以及使用 <code>ping bing.com</code> 确认是否真的能联网。</p>
-<p>联网后应当使用 NTP 服务同步时间，因为一些镜像站在本地时间（虚拟机的时间）与系统时间（镜像站的时间）差别过大的时候，无法同步消息。命令如下：</p>
+<h3 id="连接互联网并配置时间">连接互联网并配置时间</h3>
+<p>与 Ubuntu、Debian 的安装介质不同，Archlinux 安装光盘并不包含 Linux
+系统的相关组件，所以需要从互联网下载，那么连接互联网是安装系统的基础。</p>
+<p>在物理机上连接互联网有时候并不是一件很轻松的事情，特别是当互联网服务需要
+Web
+认证的时候（校园网：报我身份证号得了）。然而在虚拟机中倒是相当简单，Hyper-V
+的默认交换机提供了 NAT 功能，只需要虚拟机通过 DHCP 获取 IP
+即可连接到互联网。而 Archlinux 安装系统在启动过程中就启动了 DHCP
+服务器，所以一切都不用配置。如果不放心，可以使用 <code>ip link</code>
+查看网卡的 IP 地址情况，以及使用 <code>ping bing.com</code>
+确认是否真的能联网。</p>
+<p>联网后应当使用 NTP
+服务同步时间，因为一些镜像站在本地时间（虚拟机的时间）与系统时间（镜像站的时间）差别过大的时候，无法同步消息。命令如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">timedatectl<br></code></pre></td></tr></table></figure>
-
 <p>运行结果如图2-1所示：</p>
 <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-1.png" srcset="/img/loading.gif" lazyload class="" title="同步时间">
-
-<h3 id="创建并格式化硬盘分区"><a href="#创建并格式化硬盘分区" class="headerlink" title="创建并格式化硬盘分区"></a>创建并格式化硬盘分区</h3><p>这是 Archlinux 甚至所有操作系统不可或缺的一步。主要分为：寻找可用设备、划分分区、格式化分区三步。</p>
-<ol>
+<h3 id="创建并格式化硬盘分区">创建并格式化硬盘分区</h3>
+<p>这是 Archlinux
+甚至所有操作系统不可或缺的一步。主要分为：寻找可用设备、划分分区、格式化分区三步。</p>
+<ol type="1">
 <li><p>寻找可用设备</p>
-<p> 要查找系统中可用的存储设备，使用 <code>fdisk -l</code> 可以看到一些设备，其中结果中以 <code>rom</code>、<code>loop</code> 或者 <code>airootfs</code> 结尾的设备可以被忽略。结果中以 <code>rpbm</code>、<code>boot0</code> 或者 <code>boot1</code> 结尾的 <code>mmcblk*</code> 设备也可以被忽略。一般情况下是以 <code>sd*</code> 或者 <code>nvme*</code> 结尾。运行结果如图2-2-1所示：</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-1.png" srcset="/img/loading.gif" lazyload class="" title="寻找可用设备">
-</li>
+<p>要查找系统中可用的存储设备，使用 <code>fdisk -l</code>
+可以看到一些设备，其中结果中以 <code>rom</code>、<code>loop</code> 或者
+<code>airootfs</code> 结尾的设备可以被忽略。结果中以
+<code>rpbm</code>、<code>boot0</code> 或者 <code>boot1</code> 结尾的
+<code>mmcblk*</code> 设备也可以被忽略。一般情况下是以 <code>sd*</code>
+或者 <code>nvme*</code> 结尾。运行结果如图2-2-1所示：</p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-1.png" srcset="/img/loading.gif" lazyload class="" title="寻找可用设备"></p></li>
 <li><p>划分分区</p>
-<p> 其次，使用分区工具在磁盘的空余空间上划分分区。对于 Linux 系统而言，至少需要：一个根分区，用于挂载根目录；对于 UEFI 启动模式，一个EFI系统分区。此外，还可以设置磁盘阵列等功能，实现更多特性。然而本实验中并不需要这样多的特性，本文中规划了三个分区：</p>
+<p>其次，使用分区工具在磁盘的空余空间上划分分区。对于 Linux
+系统而言，至少需要：一个根分区，用于挂载根目录；对于 UEFI
+启动模式，一个EFI系统分区。此外，还可以设置磁盘阵列等功能，实现更多特性。然而本实验中并不需要这样多的特性，本文中规划了三个分区：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>分区</th>
 <th>挂载点</th>
 <th>类型</th>
 <th>分区大小</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td><code>/dev/sda1</code></td>
 <td><code>/boot</code></td>
 <td>EFI系统分区</td>
 <td>1G</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>/dev/sda2</code></td>
 <td><code>/</code></td>
 <td>Linux Root (x86_64)</td>
 <td>16G</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>/dev/sda3</code></td>
 <td><code>/home</code></td>
 <td>Linux文件系统</td>
 <td>剩余空间</td>
 </tr>
-</tbody></table>
-<p> 使用 <code>cfdisk</code> 对磁盘执行分区（Linux Root (x86_64)也可以换成Linux文件系统），结果如图2-2-2所示：</p>
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-2.png" srcset="/img/loading.gif" lazyload class="" title="划分分区界面">
-
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-3.png" srcset="/img/loading.gif" lazyload class="" title="划分分区结果">
-</li>
+</tbody>
+</table>
+<p>使用 <code>cfdisk</code> 对磁盘执行分区（Linux Root
+(x86_64)也可以换成Linux文件系统），结果如图2-2-2所示：</p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-2.png" srcset="/img/loading.gif" lazyload class="" title="划分分区界面"></p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-3.png" srcset="/img/loading.gif" lazyload class="" title="划分分区结果"></p></li>
 <li><p>格式化分区</p>
-<p> 最后，格式化各个分区，创建文件系统。文件系统是组织文件数据的方式，不同的文件系统有不同的特点。对于这里所分的三个分区，设置如下文件系统：</p>
+<p>最后，格式化各个分区，创建文件系统。文件系统是组织文件数据的方式，不同的文件系统有不同的特点。对于这里所分的三个分区，设置如下文件系统：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>分区</th>
 <th>文件系统</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td><code>/dev/sda1</code></td>
 <td>fat32</td>
 <td>EFI系统分区必须是fat32文件系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>/dev/sda2</code></td>
 <td>ext4</td>
 <td>Linux 默认文件系统，各方面属性很均匀</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>/dev/sda3</code></td>
 <td>ext4</td>
 <td></td>
 </tr>
-</tbody></table>
-<p> 命令如下，运行结果如图2-2-4所示：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkfs.ext4 /dev/sda2<br>mkfs.ext4 /dev/sda3<br>mkfs.fat -F 32 /dev/sda1<br></code></pre></td></tr></table></figure>
-
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-4.png" srcset="/img/loading.gif" lazyload class="" title="格式化分区"></li>
+</tbody>
+</table>
+<p>命令如下，运行结果如图2-2-4所示：</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkfs.ext4 /dev/sda2<br>mkfs.ext4 /dev/sda3<br>mkfs.fat -F 32 /dev/sda1<br></code></pre></td></tr></table></figure></p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-4.png" srcset="/img/loading.gif" lazyload class="" title="格式化分区"></p></li>
 </ol>
-<h3 id="配置镜像并安装系统"><a href="#配置镜像并安装系统" class="headerlink" title="配置镜像并安装系统"></a>配置镜像并安装系统</h3><p>前面说到 Archlinux 安装需要连接网络下载 Linux 相关的文件。而 Archlinux 提供的镜像远在海外，即使没有众所周知的原因，下载速度也会大打折扣，所以需要配置一下镜像。这里我使用了清华大学开源镜像站的 Archlinux 镜像，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/archlinux/">点击</a>获取配置教程。</p>
-<p>接着就该将 Archlinux 安装到磁盘中了。在安装之前需要将安装系统的磁盘挂载到系统中，且一定要按照层级顺序挂载目录，否则会出现无法访问目录的情况。以下是挂载的命令:</p>
+<h3 id="配置镜像并安装系统">配置镜像并安装系统</h3>
+<p>前面说到 Archlinux 安装需要连接网络下载 Linux 相关的文件。而
+Archlinux
+提供的镜像远在海外，即使没有众所周知的原因，下载速度也会大打折扣，所以需要配置一下镜像。这里我使用了清华大学开源镜像站的
+Archlinux 镜像，<a
+target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/archlinux/">点击</a>获取配置教程。</p>
+<p>接着就该将 Archlinux
+安装到磁盘中了。在安装之前需要将安装系统的磁盘挂载到系统中，且一定要按照层级顺序挂载目录，否则会出现无法访问目录的情况。以下是挂载的命令:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">mount /dev/sda2 /mnt<br>mount --mkdir /dev/sda1 /mnt/boot<br>mount --mkdir /dev/sda3 /mnt/home<br></code></pre></td></tr></table></figure>
-
 <p>接着就是安装系统。首先先更新软件库，接着更新密钥环（如果长时间不更新密钥环会导致过期证书无法更新，软件安装检查过不了），最后一键安装系统。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">pacman -Syy<br>pacman -Sy archlinux-keyring<br>pacstrap -K /mnt base linux grub efibootmgr neovim<br></code></pre></td></tr></table></figure>
-
 <p>这里说明一下 <code>pacstrap</code> 安装的几个软件包：</p>
 <ul>
 <li><code>base</code> 是必须的</li>
-<li><code>linux</code> 可以选择其<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%86%85%E6%A0%B8#%E5%AE%98%E6%96%B9%E6%94%AF%E6%8C%81%E7%9A%84%E5%86%85%E6%A0%B8">变种</a></li>
-<li><code>grub</code> 和 <code>efibootmgr</code> 是为了安装和管理 GRUB 启动器的包，后面会用到</li>
+<li><code>linux</code> 可以选择其<a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%86%85%E6%A0%B8#%E5%AE%98%E6%96%B9%E6%94%AF%E6%8C%81%E7%9A%84%E5%86%85%E6%A0%B8">变种</a></li>
+<li><code>grub</code> 和 <code>efibootmgr</code> 是为了安装和管理 GRUB
+启动器的包，后面会用到</li>
 <li><code>neovim</code> 是为了防止没有趁手的编辑器。</li>
 </ul>
 <p>如果你还想要安装其它软件（AUR仓库的得到后面安装了），可以直接在后面添加就完事了。</p>
-<h3 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h3><p>系统已经安装完啦，下面我们应该来配置系统了。有两项工作要做，一是生成 <code>fstab</code>，在后面的启动过程中如何挂载磁盘，二是配置 GRUB 引导器来引导操作系统。</p>
-<ol>
+<h3 id="配置系统">配置系统</h3>
+<p>系统已经安装完啦，下面我们应该来配置系统了。有两项工作要做，一是生成
+<code>fstab</code>，在后面的启动过程中如何挂载磁盘，二是配置 GRUB
+引导器来引导操作系统。</p>
+<ol type="1">
 <li><p>生成 <code>fstab</code></p>
-<p> 命令如下，结果如图2-2-5所示</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab<br></code></pre></td></tr></table></figure>
-
- <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-5.png" srcset="/img/loading.gif" lazyload class="" title="生成 fstab">
-</li>
+<p>命令如下，结果如图2-2-5所示</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab<br></code></pre></td></tr></table></figure></p>
+<p><img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig2-2-5.png" srcset="/img/loading.gif" lazyload class="" title="生成 fstab"></p></li>
 <li><p>配置 GRUB</p>
-<p> 首先切换到安装好的系统下面</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">arch-chroot /mnt<br></code></pre></td></tr></table></figure>
-
-<p> 然后，安装 GRUB 并生成配置</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB<br>grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure></li>
+<p>首先切换到安装好的系统下面</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">arch-chroot /mnt<br></code></pre></td></tr></table></figure></p>
+<p>然后，安装 GRUB 并生成配置</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB<br>grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="善后工作"><a href="#善后工作" class="headerlink" title="善后工作"></a>善后工作</h2><p>至此，Archlinux 已经完整地安装在你的虚拟硬盘中了。用 <code>exit</code> 退出安装好的 Archlinux 系统，再 <code>poweroff</code> 关掉安装系统以关闭虚拟机。设置启动顺序，这里需要将 DVD 驱动器删除，接着将 <code>grubx64.efi</code> 移动到最上面，保存设置后就算完成啦。最终结果如图3-1所示</p>
+<h2 id="善后工作">善后工作</h2>
+<p>至此，Archlinux 已经完整地安装在你的虚拟硬盘中了。用
+<code>exit</code> 退出安装好的 Archlinux 系统，再 <code>poweroff</code>
+关掉安装系统以关闭虚拟机。设置启动顺序，这里需要将 DVD
+驱动器删除，接着将 <code>grubx64.efi</code>
+移动到最上面，保存设置后就算完成啦。最终结果如图3-1所示</p>
 <img src="/2024/07/19/hyper-v-adventure/installing-archlinux-in-hyper-v-1/fig3-1.png" srcset="/img/loading.gif" lazyload class="" title="设置启动顺序">
-
 <p>下一篇主要介绍系统中桌面环境的安装及配置。</p>
 
                 
@@ -520,6 +561,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/08/21/ctf/basectf2024/week1/" title="BaseCTF 2024 Week1 Writeup">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">BaseCTF 2024 Week1 Writeup</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
