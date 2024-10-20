@@ -1,0 +1,898 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BadCodeBuilder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="GeekGame 2024 WriteUp，艰难且更艰难">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GeekGame 2024 WriteUp">
+<meta property="og:url" content="https://blog.bcb.pub/2024/10/20/ctf/geekgame2024/index.html">
+<meta property="og:site_name" content="BadCode">
+<meta property="og:description" content="GeekGame 2024 WriteUp，艰难且更艰难">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-20T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-20T14:40:48.360Z">
+<meta property="article:author" content="BadCodeBuilder">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>GeekGame 2024 WriteUp - BadCode</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.bcb.pub","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BadCode</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="GeekGame 2024 WriteUp"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-20 23:00" pubdate>
+          2024年10月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          27 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">GeekGame 2024 WriteUp</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>GeekGame 2024 WriteUp，艰难且更艰难</p>
+
+<!-- 希望以后还有命写 WP -->
+
+<span id="more"></span>
+<blockquote>
+<p>Rank：0x7f/0x30 （所有选手/其它选手）</p>
+</blockquote>
+<p>做出来一些娱乐向的题目，算是缓解了一点本来要崩溃的精神状态。然后技术力的题目就做出来很少了，这里就放两题吧，</p>
+<h2 id="web-copy-hard">web-copy (hard)</h2>
+<p>不给 F12 是吧，Selenium 一把梭，我直接输出 <code>page_source</code>
+然后 XPATH。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<br><br><br>token       = <span class="hljs-string">&quot;&lt;your token&gt;&quot;</span><br>home_url    = <span class="hljs-string">f&quot;https://prob05.geekgame.pku.edu.cn/?token=<span class="hljs-subst">&#123;token&#125;</span>&quot;</span><br><br>browser = webdriver.Edge()<br>browser.get(home_url)<br><br>el = browser.find_element(By.XPATH, <span class="hljs-string">&quot;/html/body/p[4]/a[1]&quot;</span>)<br>el.click()<br><br>els = browser.find_elements(By.XPATH, <span class="hljs-string">&#x27;//div[@id=&quot;centralNoiseContent1&quot;]/div[@class=&quot;noiseLine&quot;]&#x27;</span>)<br>captcha = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> el: el.text, els))<br><br>el_inp = browser.find_element(By.ID, <span class="hljs-string">&quot;noiseInput&quot;</span>)<br>el_btn = browser.find_element(By.ID, <span class="hljs-string">&quot;submitBtn&quot;</span>)<br>el_inp.send_keys(captcha)<br>el_btn.click()<br><br><span class="hljs-built_in">print</span>(browser.page_source)<br>time.sleep(<span class="hljs-number">5</span>)<br>browser.close()<br></code></pre></td></tr></table></figure>
+<h2 id="web-copy-expert">web-copy (expert)</h2>
+<p>还不给 F12 是吧，Selenium
+一把梭，嗯？啥都没有？<code>view-source:</code>
+看一眼发生什么事了。看到</p>
+<ol type="1">
+<li>最后加载了一个 <code>page2.max.js</code>，点开一看全是
+<code>_0xffffffff</code> 这样的变量，大概是混淆过了。</li>
+<li>有一个 <code>id</code> 为 <code>root</code>
+的节点，看起来内容像是加密过的，搜索了一下好像叫 Fernet
+加密，但是拖到赛博厨子一看要密钥，还得是要破解 <code>page2.max.js</code>
+文件。</li>
+</ol>
+<p>心里大致有个数，脚本里面挂了一个 <code>onload</code> 侦测器，然后把
+<code>&lt;div id="root"&gt;&lt;/div&gt;</code>
+的内容解密，最后挂载上去（具体怎么做到没有节点的不清楚）。那么没得选，开始逆向这个混淆吧。搜索关键词<strong>js
+反混淆</strong>。</p>
+<h3 id="曲折">曲折</h3>
+<p>看了好久找到了一篇<a
+target="_blank" rel="noopener" href="https://github.com/AlienwareHe/awesome-reverse/blob/main/js/js-obfuscator.md#javascript-obfuscator%E5%8F%8D%E6%B7%B7%E6%B7%86">文档</a>，其中介绍了
+AST 混淆，看来要啃代码查重大杀器 AST 了。</p>
+<p>但是实际上配置了好久 babel
+之后，发现语法树太大了，这要是一段段抠，一周都看不完。考虑到这里的js文件是一个静态文件，下载下来本地调试就好了，你不让我
+F12，我可以 <code>alert()</code> 呀；你不让我
+<code>alert()</code>，我可以 localStorage 或者
+sessionStorage。并且，虽然用 babel
+解析的语法树非常庞大，但是对文件还算是格式化了，看起来像一点js的样子了。</p>
+<h3 id="分析">分析</h3>
+<p>先看最后</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">window</span>[<span class="hljs-title function_">a0_0x35fc87</span>(<span class="hljs-number">0xf21</span>, <span class="hljs-number">0x16b0</span>)] = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">a0_0x5b8baf</span>();<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>不出所料，就是给某个侦测器挂了钩子，那么就从
+<code>a0_0x5b8baf()</code> 来分析。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a0_0x5b8baf</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">var</span> a0_0x523a18 = &#123;<br>      <span class="hljs-attr">_0x2818de</span>: <span class="hljs-number">0x199a</span>,<br>      <span class="hljs-attr">_0x1a652f</span>: <span class="hljs-number">0x6e6</span>,<br>      <span class="hljs-attr">_0x24d50d</span>: <span class="hljs-number">0xdb8</span>,<br>      <span class="hljs-attr">_0x1879fe</span>: <span class="hljs-number">0xac</span>,<br>      <span class="hljs-attr">_0x2cb4a8</span>: <span class="hljs-number">0xc9e</span>,<br>      <span class="hljs-attr">_0x49173d</span>: <span class="hljs-number">0x19b9</span>,<br>      <span class="hljs-attr">_0x15b636</span>: <span class="hljs-number">0x1609</span>,<br>      <span class="hljs-attr">_0x3e0d99</span>: <span class="hljs-number">0x106f</span>,<br>      <span class="hljs-attr">_0x1aeec6</span>: <span class="hljs-number">0xb05</span>,<br>      <span class="hljs-attr">_0x5e86c5</span>: <span class="hljs-number">0x119a</span>,<br>      <span class="hljs-attr">_0x4b8b9f</span>: <span class="hljs-number">0x1045</span><br>    &#125;,<br>    a0_0x2cad5e = &#123;<br>      <span class="hljs-attr">_0x313ddb</span>: <span class="hljs-number">0x141</span><br>    &#125;,<br>    _0x4eb293 = &#123;<br>      <span class="hljs-string">&#x27;zzUXd&#x27;</span>: <span class="hljs-title function_">_0x358a2f</span>(a0_0x523a18.<span class="hljs-property">_0x2818de</span>, <span class="hljs-number">0x1135</span>),<br>      <span class="hljs-string">&#x27;erBjh&#x27;</span>: <span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x300</span>, <span class="hljs-number">0xa11</span>),<br>      <span class="hljs-string">&#x27;QwGoq&#x27;</span>: <span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x12d7</span>, a0_0x523a18.<span class="hljs-property">_0x1a652f</span>),<br>      <span class="hljs-string">&#x27;PqqCc&#x27;</span>: <span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-number">0xe36</span>, a0_0x523a18.<span class="hljs-property">_0x24d50d</span>),<br>      <span class="hljs-string">&#x27;kQJej&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">_0x49aeb9, _0x38ac34, _0xe9eda2</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">_0x49aeb9</span>(_0x38ac34, _0xe9eda2);<br>      &#125;,<br>      <span class="hljs-string">&#x27;NxUhs&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">_0x5574a9, _0xa4b111, _0x3587ae</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">_0x5574a9</span>(_0xa4b111, _0x3587ae);<br>      &#125;<br>    &#125;;<br>  <span class="hljs-comment">// Tag1</span><br>  <span class="hljs-keyword">const</span> _0x4b819d = <span class="hljs-variable language_">document</span>[<span class="hljs-title function_">_0x358a2f</span>(<span class="hljs-number">0x3c7</span>, a0_0x523a18.<span class="hljs-property">_0x1879fe</span>)](_0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(a0_0x523a18.<span class="hljs-property">_0x2cb4a8</span>, <span class="hljs-number">0x119c</span>)]),<br>    _0x17cb53 = _0x4b819d[<span class="hljs-title function_">_0x358a2f</span>(a0_0x523a18.<span class="hljs-property">_0x49173d</span>, <span class="hljs-number">0xdfe</span>)];<br>  _0x4b819d[<span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x162c</span>, <span class="hljs-number">0x163b</span>)] = <span class="hljs-string">&#x27;&#x27;</span>, _0x4b819d[<span class="hljs-string">&#x27;style&#x27;</span>][<span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-number">0xde0</span>, <span class="hljs-number">0xf2f</span>)] = _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(a0_0x523a18.<span class="hljs-property">_0x15b636</span>, a0_0x523a18.<span class="hljs-property">_0x3e0d99</span>)];<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-params">_0x1a1e15, _0x19ed69</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">a0_0x2e32a9</span>(_0x1a1e15, _0x19ed69 - <span class="hljs-number">0x233</span>);<br>  &#125;<br>  <span class="hljs-keyword">var</span> _0x58d552 = &#123;&#125;;<br>  _0x58d552[<span class="hljs-string">&#x27;mode&#x27;</span>] = _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(a0_0x523a18.<span class="hljs-property">_0x1aeec6</span>, <span class="hljs-number">0x16c7</span>)];<br>  <span class="hljs-keyword">const</span> _0xab6759 = _0x4b819d[<span class="hljs-string">&#x27;attachShadow&#x27;</span>](_0x58d552), _0x332326 = <span class="hljs-string">&#x27;...&#x27;</span>;<br>  _0xab6759[<span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-number">0xf69</span>, <span class="hljs-number">0x119b</span>)] = <span class="hljs-title function_">_0x4bbdbc</span>(-<span class="hljs-number">0x87</span>, <span class="hljs-number">0x106</span>);<br>  <span class="hljs-keyword">const</span> _0x3188da = <span class="hljs-variable language_">document</span>[<span class="hljs-string">&#x27;createElement&#x27;</span>](_0x4eb293[<span class="hljs-string">&#x27;PqqCc&#x27;</span>]);<br>  _0x3188da[<span class="hljs-string">&#x27;textContent&#x27;</span>] = _0x332326, _0xab6759[<span class="hljs-string">&#x27;appendChild&#x27;</span>](_0x3188da);<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">_0x358a2f</span>(<span class="hljs-params">_0x1aadd0, _0x497d2c</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">a0_0x32746c</span>(_0x497d2c, _0x1aadd0 - <span class="hljs-number">0x24c</span>);<br>  &#125;<br>  [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>].<span class="hljs-title function_">forEach</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">a0_0x504e28</span>(_0xab6759)), _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x137f</span>, a0_0x523a18.<span class="hljs-property">_0x4b8b9f</span>)](a0_0x204ab6, _0xab6759, _0x17cb53);<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-params">_0x5411b3, _0x388f1b</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">a0_0x32746c</span>(_0x388f1b, _0x5411b3 - -a0_0x2cad5e.<span class="hljs-property">_0x313ddb</span>);<br>  &#125;<br>  _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0xbbd</span>, <span class="hljs-number">0x303</span>)](<span class="hljs-built_in">setInterval</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">a0_0x504e28</span>(_0xab6759), <span class="hljs-number">0x1</span> * -<span class="hljs-number">0x5e1</span> + -<span class="hljs-number">0x242b</span> + <span class="hljs-number">0x494c</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>看上去好吓人，但是我们一行行来看（IDA不也是这样么）。前面的变量暂时不看，我们也不知道到底想要干什么，反正就是拆字。</p>
+<p>看 Tag1，这里有一个 <code>document</code> 的成员函数，用
+<code>alert</code> 看看
+<code>_0x358a2f(0x3c7, a0_0x523a18._0x1879fe)</code> 和
+<code>_0x4eb293[_0xe7c12d(a0_0x523a18._0x2cb4a8, 0x119c)]</code>。很好</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">_0x358a2f</span>(<span class="hljs-number">0x3c7</span>, a0_0x523a18.<span class="hljs-property">_0x1879fe</span>) = <span class="hljs-string">&quot;getElementById&quot;</span>;<br>_0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(a0_0x523a18.<span class="hljs-property">_0x2cb4a8</span>, <span class="hljs-number">0x119c</span>)] = <span class="hljs-string">&quot;root&quot;</span>;<br></code></pre></td></tr></table></figure>
+<p>那么明白了，这里
+<code>const _0x4b819d = document.getElementById("root");</code>。这个出来了之后，后面的解析就有点眉目了。下面是大部分解析后的结果（以注释的形式放在语句上，有点长，请耐心读一读）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a0_0x5b8baf</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">var</span> a0_0x523a18 = &#123;<br>      <span class="hljs-attr">_0x2818de</span>: <span class="hljs-number">0x199a</span>,<br>      <span class="hljs-attr">_0x1a652f</span>: <span class="hljs-number">0x6e6</span>,<br>      <span class="hljs-attr">_0x24d50d</span>: <span class="hljs-number">0xdb8</span>,<br>      <span class="hljs-attr">_0x1879fe</span>: <span class="hljs-number">0xac</span>,<br>      <span class="hljs-attr">_0x2cb4a8</span>: <span class="hljs-number">0xc9e</span>,<br>      <span class="hljs-attr">_0x49173d</span>: <span class="hljs-number">0x19b9</span>,<br>      <span class="hljs-attr">_0x15b636</span>: <span class="hljs-number">0x1609</span>,<br>      <span class="hljs-attr">_0x3e0d99</span>: <span class="hljs-number">0x106f</span>,<br>      <span class="hljs-attr">_0x1aeec6</span>: <span class="hljs-number">0xb05</span>,<br>      <span class="hljs-attr">_0x5e86c5</span>: <span class="hljs-number">0x119a</span>,<br>      <span class="hljs-attr">_0x4b8b9f</span>: <span class="hljs-number">0x1045</span><br>    &#125;,<br>    a0_0x2cad5e = &#123;<br>      <span class="hljs-attr">_0x313ddb</span>: <span class="hljs-number">0x141</span><br>    &#125;,<br>    _0x4eb293 = &#123;<br>      <span class="hljs-string">&#x27;zzUXd&#x27;</span>: <span class="hljs-title function_">_0x358a2f</span>(a0_0x523a18.<span class="hljs-property">_0x2818de</span>, <span class="hljs-number">0x1135</span>),<br>      <span class="hljs-string">&#x27;erBjh&#x27;</span>: <span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x300</span>, <span class="hljs-number">0xa11</span>),<br>      <span class="hljs-string">&#x27;QwGoq&#x27;</span>: <span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x12d7</span>, a0_0x523a18.<span class="hljs-property">_0x1a652f</span>),<br>      <span class="hljs-string">&#x27;PqqCc&#x27;</span>: <span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-number">0xe36</span>, a0_0x523a18.<span class="hljs-property">_0x24d50d</span>),<br>      <span class="hljs-string">&#x27;kQJej&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">_0x49aeb9, _0x38ac34, _0xe9eda2</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">_0x49aeb9</span>(_0x38ac34, _0xe9eda2);<br>      &#125;,<br>      <span class="hljs-string">&#x27;NxUhs&#x27;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">_0x5574a9, _0xa4b111, _0x3587ae</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">_0x5574a9</span>(_0xa4b111, _0x3587ae);<br>      &#125;<br>    &#125;;<br>  <span class="hljs-comment">// _0x358a2f(0x3c7, a0_0x523a18._0x1879fe) = &quot;getElementById&quot;;</span><br>  <span class="hljs-comment">// _0x4eb293[_0xe7c12d(a0_0x523a18._0x2cb4a8, 0x119c)] = &quot;root&quot;;</span><br>  <span class="hljs-comment">// const _0x4b819d = document.getElementById(&quot;root&quot;);</span><br>  <span class="hljs-comment">// const rootEl = _0x4b819d; // 设置别名，看得清楚一点，下同</span><br>  <span class="hljs-keyword">const</span> _0x4b819d = <span class="hljs-variable language_">document</span>[<span class="hljs-title function_">_0x358a2f</span>(<span class="hljs-number">0x3c7</span>, a0_0x523a18.<span class="hljs-property">_0x1879fe</span>)](_0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(a0_0x523a18.<span class="hljs-property">_0x2cb4a8</span>, <span class="hljs-number">0x119c</span>)]),<br>  <span class="hljs-comment">// _0x358a2f(a0_0x523a18._0x49173d, 0xdfe) = &quot;textContent&quot;;</span><br>  <span class="hljs-comment">// _0x17cb53 = rootEl.textContent;</span><br>  <span class="hljs-comment">// const cipherContent = _0x17cb53;</span><br>    _0x17cb53 = _0x4b819d[<span class="hljs-title function_">_0x358a2f</span>(a0_0x523a18.<span class="hljs-property">_0x49173d</span>, <span class="hljs-number">0xdfe</span>)];<br><br>  <span class="hljs-comment">// _0xe7c12d(0x162c, 0x163b) = &quot;innerHTML&quot;;</span><br>  <span class="hljs-comment">// rootEl.innerHTML = &#x27;&#x27;;</span><br>  _0x4b819d[<span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x162c</span>, <span class="hljs-number">0x163b</span>)] = <span class="hljs-string">&#x27;&#x27;</span>,<br>  <span class="hljs-comment">// 设置 style，不管</span><br>    _0x4b819d[<span class="hljs-string">&#x27;style&#x27;</span>][<span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-number">0xde0</span>, <span class="hljs-number">0xf2f</span>)] = _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(a0_0x523a18.<span class="hljs-property">_0x15b636</span>, a0_0x523a18.<span class="hljs-property">_0x3e0d99</span>)];<br><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-params">_0x1a1e15, _0x19ed69</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">a0_0x2e32a9</span>(_0x1a1e15, _0x19ed69 - <span class="hljs-number">0x233</span>);<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> _0x58d552 = &#123;&#125;;<br>  <span class="hljs-comment">// _0x4eb293[_0xe7c12d(a0_0x523a18._0x1aeec6, 0x16c7)] = &quot;closed&quot;;</span><br>  <span class="hljs-comment">// _0x58d552 = &#123;&#x27;mode&#x27;: &#x27;closed&#x27;&#125;;</span><br>  <span class="hljs-comment">// const opts = _0x58d552;</span><br>  _0x58d552[<span class="hljs-string">&#x27;mode&#x27;</span>] = _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(a0_0x523a18.<span class="hljs-property">_0x1aeec6</span>, <span class="hljs-number">0x16c7</span>)];<br><br>  <span class="hljs-comment">// _0xab6759 = rootEl.attachShadow(opts);</span><br>  <span class="hljs-comment">// const shadowRootEl = _0xab6759;</span><br>  <span class="hljs-keyword">const</span> _0xab6759 = _0x4b819d[<span class="hljs-string">&#x27;attachShadow&#x27;</span>](_0x58d552), _0x332326 = <span class="hljs-string">&#x27;...&#x27;</span>;<br><br>  _0xab6759[<span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-number">0xf69</span>, <span class="hljs-number">0x119b</span>)] = <span class="hljs-title function_">_0x4bbdbc</span>(-<span class="hljs-number">0x87</span>, <span class="hljs-number">0x106</span>);<br>  <span class="hljs-keyword">const</span> _0x3188da = <span class="hljs-variable language_">document</span>[<span class="hljs-string">&#x27;createElement&#x27;</span>](_0x4eb293[<span class="hljs-string">&#x27;PqqCc&#x27;</span>]);<br>  _0x3188da[<span class="hljs-string">&#x27;textContent&#x27;</span>] = _0x332326, _0xab6759[<span class="hljs-string">&#x27;appendChild&#x27;</span>](_0x3188da);<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">_0x358a2f</span>(<span class="hljs-params">_0x1aadd0, _0x497d2c</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">a0_0x32746c</span>(_0x497d2c, _0x1aadd0 - <span class="hljs-number">0x24c</span>);<br>  &#125;<br><br>  <span class="hljs-comment">// [0x9*-0x40e+0x5ec+-0x1*-0x1e93,0x3*0x45+0xc16+0xce3*-0x1,-0x11eb*0x1+0x53*0x2c+0x3aa] = [1,2,3]</span><br>  <span class="hljs-comment">// _0x4bbdbc(0xd45,a0_0x523a18._0x5e86c5) = &quot;forEach&quot;</span><br>  <span class="hljs-comment">// [1,2,3].forEach(() =&gt; a0_0x504e28(shadowRootEl));</span><br>  [<span class="hljs-number">0x9</span>*-<span class="hljs-number">0x40e</span>+<span class="hljs-number">0x5ec</span>+-<span class="hljs-number">0x1</span>*-<span class="hljs-number">0x1e93</span>,<span class="hljs-number">0x3</span>*<span class="hljs-number">0x45</span>+<span class="hljs-number">0xc16</span>+<span class="hljs-number">0xce3</span>*-<span class="hljs-number">0x1</span>,-<span class="hljs-number">0x11eb</span>*<span class="hljs-number">0x1</span>+<span class="hljs-number">0x53</span>*<span class="hljs-number">0x2c</span>+<span class="hljs-number">0x3aa</span>][<span class="hljs-title function_">_0x4bbdbc</span>(<span class="hljs-number">0xd45</span>,a0_0x523a18.<span class="hljs-property">_0x5e86c5</span>)](<span class="hljs-function">()=&gt;</span><span class="hljs-title function_">a0_0x504e28</span>(_0xab6759)),<br><br>  <span class="hljs-comment">// 这里虽然没能解析到具体的名称，但是看到最后函数调用的过程中 shadowRootEl</span><br>  <span class="hljs-comment">// 和 cipherContent 都被放在了一个函数里面，可以猜想这里大概就是解密+内容挂载了，</span><br>  <span class="hljs-comment">// 我们只要在后面截胡就好</span><br>    _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0x137f</span>,a0_0x523a18.<span class="hljs-property">_0x4b8b9f</span>)](a0_0x204ab6,_0xab6759,_0x17cb53);<br><br>  <span class="hljs-comment">// 这里创建一个新的节点，内容是影子根的内容，然后挂载到页面上，selenium 就能读到了</span><br>  <span class="hljs-keyword">const</span> d = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);<br>  d.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&quot;id&quot;</span>, <span class="hljs-string">&quot;webcopylvl2&quot;</span>);<br>  d.<span class="hljs-property">innerHTML</span> = _0xab6759.<span class="hljs-property">innerHTML</span>;<br>  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&quot;body&quot;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">appendChild</span>(d);<br><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-params">_0x5411b3, _0x388f1b</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">a0_0x32746c</span>(_0x388f1b, _0x5411b3 - -a0_0x2cad5e.<span class="hljs-property">_0x313ddb</span>);<br>  &#125;<br>  _0x4eb293[<span class="hljs-title function_">_0xe7c12d</span>(<span class="hljs-number">0xbbd</span>, <span class="hljs-number">0x303</span>)](<span class="hljs-built_in">setInterval</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">a0_0x504e28</span>(_0xab6759), <span class="hljs-number">0x1</span> * -<span class="hljs-number">0x5e1</span> + -<span class="hljs-number">0x242b</span> + <span class="hljs-number">0x494c</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后用 Selenium 读取一下内容，发现是用 <code>data-xxxxxxxx</code> 和
+CSS 的 <code>content</code> 来显示的。本来想解析 DOM 树和 CSS
+手动拼接的，但是发现 <code>&lt;style&gt;</code> 节点内容拿不到，还是用
+<code>getComputedStyle()</code> 来解决计算后的值罢。</p>
+<h3 id="综上">综上</h3>
+<p>步骤如下：</p>
+<ol type="1">
+<li>修改 js 文件（可以在这里<a href="/2024/10/20/ctf/geekgame2024/page2.max.js" title="下载">下载</a>修改后的），并放在
+<code>./static/js</code> 目录下</li>
+<li>在当前目录下启动一个 http 服务器，例如
+<code>python -m http.server</code></li>
+<li>执行 Python 脚本，更加具体地：
+<ol type="1">
+<li>获取带有密文的 <code>index.html</code> ，并存储在当前目录下</li>
+<li>操作 Selenium 读取页面</li>
+<li>定位到元素，并执行
+<code>getComputedStyle().getPropertyValue('content')</code>
+直接获得解码后的结果</li>
+<li>拼接结果并获得 flag</li>
+</ol></li>
+</ol>
+<p>Python 脚本如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<br><br><br>token       = <span class="hljs-string">&quot;&lt;your_token&gt;&quot;</span><br>home_url    = <span class="hljs-string">f&quot;https://prob05.geekgame.pku.edu.cn/?token=<span class="hljs-subst">&#123;token&#125;</span>&quot;</span><br>q2_url      = <span class="hljs-string">&quot;https://prob05.geekgame.pku.edu.cn/page2&quot;</span><br>localhost   = <span class="hljs-string">&quot;http://127.0.0.1:8000&quot;</span><br><br>s = requests.Session()<br>s.get(home_url)<br><br>res = s.get(q2_url)<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;index.html&quot;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> home:<br>    home.write(res.text)<br><br>data = &#123;<span class="hljs-string">&quot;response&quot;</span>: <span class="hljs-string">&quot;&quot;</span>&#125;<br>_<span class="hljs-keyword">match</span> = re.search(<span class="hljs-string">r&#x27;&lt;input type=&quot;hidden&quot; name=&quot;ts&quot; value=&quot;(\d+)&quot;&gt;&#x27;</span>, res.text)<br>data[<span class="hljs-string">&quot;ts&quot;</span>] = <span class="hljs-number">0</span><br><span class="hljs-keyword">if</span> _<span class="hljs-keyword">match</span>:<br>    data[<span class="hljs-string">&quot;ts&quot;</span>] = <span class="hljs-built_in">int</span>(_<span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>))<br>_<span class="hljs-keyword">match</span> = re.search(<span class="hljs-string">r&#x27;&lt;input type=&quot;hidden&quot; name=&quot;certificate&quot; value=&quot;([0-9a-f]+)&quot;&gt;&#x27;</span>, res.text)<br>data[<span class="hljs-string">&quot;certificate&quot;</span>] = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">if</span> _<span class="hljs-keyword">match</span>:<br>    data[<span class="hljs-string">&quot;certificate&quot;</span>] = _<span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>)<br><br>browser = webdriver.Edge()<br>browser.get(localhost)<br>time.sleep(<span class="hljs-number">2</span>)<br><br>els = browser.find_elements(By.XPATH, <span class="hljs-string">&quot;//div[@id=&#x27;centralNoiseContainer&#x27;]/div[@id=&#x27;centralNoiseContent1&#x27;]/span&quot;</span>)<br>ans = []<br><span class="hljs-keyword">for</span> el <span class="hljs-keyword">in</span> els:<br>    el_id = el.get_attribute(<span class="hljs-string">&quot;id&quot;</span>)<br>    ans.append(browser.execute_script(<span class="hljs-string">f&quot;return window.getComputedStyle(document.querySelector(&#x27;#<span class="hljs-subst">&#123;el_id&#125;</span>&#x27;), &#x27;:before&#x27;).getPropertyValue(&#x27;content&#x27;)&quot;</span>))<br>    ans.append(browser.execute_script(<span class="hljs-string">f&quot;return window.getComputedStyle(document.querySelector(&#x27;#<span class="hljs-subst">&#123;el_id&#125;</span>&#x27;), &#x27;:after&#x27;).getPropertyValue(&#x27;content&#x27;)&quot;</span>))<br>captcha = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> s: s.replace(<span class="hljs-string">&quot;\&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>), ans))<br>data[<span class="hljs-string">&quot;response&quot;</span>] = captcha<br><br>res = s.post(q2_url, data=data)<br><span class="hljs-built_in">print</span>(res.text)<br><br>s.close()<br>time.sleep(<span class="hljs-number">5</span>)<br>browser.close()<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>PS：有群友说 <code>Ctrl + s</code> 就行了，好像……真的是这样的。</p>
+<p>PPS：有群友说 Firefox
+可以无视反调试代码开控制台，如果是真的话……唉，当初抛弃你是我的不对。</p>
+</blockquote>
+<h2 id="algo-codegolf-素数判断函数">algo-codegolf (素数判断函数)</h2>
+<p>因为只要检测500以内的素数，那么一次<a
+target="_blank" rel="noopener" href="https://oi-wiki.org/math/number-theory/prime/#fermat-%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95">费马素性测试</a>即可（回顾了一遍原理发现我写的不是费马素性检验，但是费马小定理是用上了）。这里需要爆破检测用的
+<span class="math inline">\(a\)</span>，使得当且仅当 <span
+class="math inline">\(n\)</span> 为素数时，<span
+class="math inline">\(a^{n-1}\equiv 1(\mathrm{mod}\ n)\)</span>
+成立。写个代码来爆破 <span class="math inline">\(a\)</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> sieve_base<br><br>primes = []<br><span class="hljs-keyword">for</span> prime <span class="hljs-keyword">in</span> sieve_base:<br>    <span class="hljs-keyword">if</span> prime &gt; <span class="hljs-number">500</span>:<br>        <span class="hljs-keyword">break</span><br>    primes.append(prime)<br><br>a = <span class="hljs-number">2</span><br>flag = <span class="hljs-literal">False</span><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> flag:<br>    flag = <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, <span class="hljs-number">500</span>):<br>        i = <span class="hljs-built_in">pow</span>(a, p-<span class="hljs-number">1</span>, p)<br>        <span class="hljs-keyword">if</span> i == <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> p <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> primes:<br>            flag = <span class="hljs-literal">False</span><br>            <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">if</span> i != <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> p <span class="hljs-keyword">in</span> primes:<br>            flag = <span class="hljs-literal">False</span><br>            <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">if</span> flag:<br>        <span class="hljs-built_in">print</span>(a)<br>        <span class="hljs-keyword">break</span><br>    a += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>得到 <span class="math inline">\(a =
+10103\)</span>，然后就是费马素性检验，<span
+class="math inline">\(10103^{n-1}\equiv 1(\mathrm{mod}\
+n)\)</span>，对于素数 <span class="math inline">\(n\)</span>
+成立，对于非素数 <span class="math inline">\(n\)</span>，因为 10103
+是素数，所以模小于500的 <span
+class="math inline">\(n\)</span>，值一定不是0。那么如何将1和大于1的值映射到1和0呢？用1整除就好了。所以最终函数为：<code>1//(10103**(n-1)%n)</code></p>
+<h2 id="algo-codegolf-pell">algo-codegolf (Pell)</h2>
+<p>这个想了好久，看了提示才出来的。<a
+target="_blank" rel="noopener" href="https://blog.paulhankin.net/fibonacci/">提示</a>的博客写得非常好，有机会的话恶补一下生成函数。直接开始公式推导吧。</p>
+<p>对于 Pell 数列，其递推公式为：</p>
+<p><span class="math display">\[
+P_{n}=\left\{ \begin{align}
+    &amp;0 &amp;,n=1 \\
+    &amp;1 &amp;,n=2 \\
+  &amp;2P_{n-1}+P_{n-2}&amp;,n&gt;2
+\end{align}
+\right.
+\]</span></p>
+<p>对于第 <span class="math inline">\(i\)</span> 项等式，两边同乘以
+<span class="math inline">\(x^{i+1}\)</span>，即<span
+class="math inline">\(P_{i+2}x^{i+1} = 2P_{i+1}x^{i+1} +
+P_{i}x^{i+1}\)</span>，然后累加前 <span class="math inline">\(n\)</span>
+项等式，得到</p>
+<p><span class="math display">\[\sum_{i=1}^nP_{i+2}x^{i+1} =
+2\sum_{i=1}^nP_{i+1}x^{i+1} + \sum_{i=1}^nP_{i}x^{i+1}\]</span></p>
+<p>令 <span
+class="math inline">\(\mathcal{P}_n(x)=\sum_{i=1}^nP_{i}x^{i-1}\)</span>，则上述等式可以写为：</p>
+<p><span class="math display">\[\begin{align}
+\mathcal{P}_{n+2}(x)-P_2x-P_1 &amp;= 2x(\mathcal{P}_{n+1}(x)-P_1) +
+x^2\mathcal{P}_{n}(x) \\
+\mathcal{P}_{n+2}(x)-x &amp;= 2x\mathcal{P}_{n+1}(x) +
+x^2\mathcal{P}_{n}(x)
+\end{align}
+\]</span></p>
+<p>也许这里就是生成函数的特殊之处，认为这里的求和是收敛的，即 <span
+class="math inline">\(\lim_{n\to\infty}\mathcal{P}_{n}(x) =
+\mathcal{P}(x)\)</span>。<del>好吧，感觉有点道理，先这么认为了。</del></p>
+<blockquote>
+<p>因为 <span class="math inline">\(P_i &lt;
+4^i\)</span>，所以该函数一定小于一个等比数列求和，那么只要让 <span
+class="math inline">\(x &lt;
+\frac{1}{4}\)</span>，即在收敛半径中，这个幂级数就一定收敛</p>
+</blockquote>
+<p>那么通过上述等式，得到：</p>
+<p><span
+class="math display">\[\mathcal{P}(x)=\frac{x}{1-2x-x^2}\]</span></p>
+<p>用Python验证一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>P = <span class="hljs-keyword">lambda</span> x: x/(<span class="hljs-number">1</span>-<span class="hljs-number">2</span>*x-x**<span class="hljs-number">2</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>P(<span class="hljs-number">1e-3</span>)<br><span class="hljs-number">0.0010020050120290703</span><br></code></pre></td></tr></table></figure>
+<p>不难发现，这里小数部分展示了 Pell 数的 2 至 7 项，原因是：</p>
+<p><span
+class="math display">\[\mathcal{P}(10^{-3})=\sum_{i=1}^{\infty}10^{-3(i-1)}P_i\]</span></p>
+<p>那么，<span class="math inline">\(P_i\equiv \lfloor
+10^{3(i-1)}\mathcal{P}(10^{-3})\rfloor (\mathrm{mod}\
+10^3)\)</span>，注意到这里模数要比 <span
+class="math inline">\(P_i\)</span> 大，不然就只能得到模数了。而 Pell
+数的通项公式为：</p>
+<p><span
+class="math display">\[P_n=\frac{(1+\sqrt{2})^n-(1-\sqrt{2})^n}{2\sqrt{2}}\]</span></p>
+<p>所以，<span class="math inline">\(P_n &lt; 4^{n+1}\)</span>。令 <span
+class="math inline">\(x = 4^{-i-1}\)</span>，则</p>
+<p><span class="math display">\[
+\begin{align}
+P_i &amp;\equiv \lfloor 4^i\mathcal{P}(4^{-i-1})\rfloor (\mathrm{mod}\
+4^{i+1}) \\
+P_i &amp;= \lfloor \frac{4^i*4^{-i-1}}{1-2*4^{-i-1}-4^{-2i-2}} \rfloor
+(\mathrm{mod}\ 4^{i+1}) \\
+&amp;= \lfloor \frac{4^i*4^{i+1}}{4^{2i+2} - 2*4^{i+1} - 1} \rfloor
+(\mathrm{mod}\ 4^{i+1}) \\
+&amp;= \lfloor \frac{4^{i^2+i}}{16*16^i - 8*4^i - 1} \rfloor
+(\mathrm{mod}\ 4*4^i)
+\end{align}
+\]</span></p>
+<p>写成 Python
+代码为：<code>4**(n*n+n)//(16*16**n-8*4**n-1)%(4*4**n)</code></p>
+<h2 id="不经意传输简单开个锁">不经意传输(🗝简单开个锁️)</h2>
+<p>想到了一点，但就是一点，后面结合提示瞪公式的时候找到了关键点。</p>
+<h3 id="题面">题面</h3>
+<p><code>FROM RSA:classic</code></p>
+<p>已知 <span class="math inline">\(p, q, n=pq, e=65537, d\equiv
+e^{-1}(\mathrm{mod}\ \varphi(n)), x_0, x_1\)</span>，其中 <span
+class="math inline">\(p\)</span> 和 <span
+class="math inline">\(q\)</span> 为素数，<span
+class="math inline">\(\varphi(n)\)</span> 为欧拉函数，<span
+class="math inline">\(x_0\)</span> 和 <span
+class="math inline">\(x_1\)</span> 为小于 <span
+class="math inline">\(n\)</span> 的随机数。对于给定 <span
+class="math inline">\(v\)</span>，已知</p>
+<p><span class="math display">\[\left\{\begin{align}
+v_0 \equiv ((v-x_0)^d+(p+q)^d+f)(\mathrm{mod}\ n) \\
+v_1 \equiv ((v-x_1)^d+(p-q)^d+f)(\mathrm{mod}\ n)
+\end{align}\right.\]</span></p>
+<p>求解 <span class="math inline">\(f\)</span>
+的值（注意，这里只能获取一次 <span class="math inline">\(v_0\)</span> 和
+<span class="math inline">\(v_1\)</span>）</p>
+<p>令 <span class="math inline">\(v = x_1\)</span>，因为 <span
+class="math inline">\(d\)</span> 为奇数，而 <span
+class="math inline">\((p\pm q)^d\)</span> 的中间项至少包含一个 <span
+class="math inline">\(pq=n\)</span>，所以被模除了，只剩下 <span
+class="math inline">\(p^d\pm q^d\)</span></p>
+<p><span class="math display">\[
+v_0-v_1 \equiv ((x_1-x_0)^d + 2q^d)(\mathrm{mod}\ n)
+\]</span></p>
+<p>第一阶段就卡在这里了，第二阶段根据提示才找到后面的做法</p>
+<p><span class="math display">\[\begin{align}
+(v_0-v_1)^e &amp;\equiv ((x_1-x_0)^d + 2q^d)^e(\mathrm{mod}\ n) \\
+&amp;\equiv ((x_1-x_0) + Kq)(\mathrm{mod}\ n) (K\in \mathbb{Z})
+\end{align}\]</span></p>
+<p>那么 <span
+class="math inline">\(((v_0-v_1)^e-(x_1-x_0))(\mathrm{mod}\ n)\)</span>
+能被 <span class="math inline">\(q\)</span> 整除，这样只需要求 <span
+class="math inline">\(gcd(((v_0-v_1)^e-(x_1-x_0))(\mathrm{mod}\ n),
+n)\)</span>，就能求出 <span class="math inline">\(q\)</span>
+了。然后后面就求出 <span class="math inline">\(p,d\)</span>，求出 <span
+class="math inline">\(f\)</span> 了。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> gcd<br><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><br>token = <span class="hljs-string">&quot;&lt;your_token&gt;&quot;</span><br><br>p = remote(<span class="hljs-string">&quot;prob07.geekgame.pku.edu.cn&quot;</span>, <span class="hljs-number">10007</span>)<br>p.recvuntil(<span class="hljs-string">b&quot;token: &quot;</span>)<br>p.sendline(token.encode())<br>p.recvuntil(<span class="hljs-string">b&quot;level[1/2]: &quot;</span>)<br>p.sendline(<span class="hljs-string">b&#x27;1&#x27;</span>)<br>n   = <span class="hljs-built_in">int</span>(p.recvline().decode().strip().replace(<span class="hljs-string">&quot;n = &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>e   = <span class="hljs-built_in">int</span>(p.recvline().decode().strip().replace(<span class="hljs-string">&quot;e = &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>x0  = <span class="hljs-built_in">int</span>(p.recvline().decode().strip().replace(<span class="hljs-string">&quot;x0 = &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>x1  = <span class="hljs-built_in">int</span>(p.recvline().decode().strip().replace(<span class="hljs-string">&quot;x1 = &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>p.recvuntil(<span class="hljs-string">b&quot;v = &quot;</span>)<br>p.sendline(<span class="hljs-built_in">str</span>(x1).encode())<br>p.recvline()<br>v0  = <span class="hljs-built_in">int</span>(p.recvline().decode().strip().replace(<span class="hljs-string">&quot;v0 = &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>v1  = <span class="hljs-built_in">int</span>(p.recvline().decode().strip().replace(<span class="hljs-string">&quot;v1 = &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>p.close()<br><br>q   = gcd((<span class="hljs-built_in">pow</span>(v0-v1, e, n) - (x1-x0))%n, n)<br><span class="hljs-keyword">assert</span> q != <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> n%q == <span class="hljs-number">0</span><br>p   = n//q<br>d   = <span class="hljs-built_in">pow</span>(e, -<span class="hljs-number">1</span>, (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>))<br>f   = (v1 - <span class="hljs-built_in">pow</span>(p, d, n) + <span class="hljs-built_in">pow</span>(q, d, n))%n<br><span class="hljs-built_in">print</span>(long_to_bytes(f))<br></code></pre></td></tr></table></figure>
+<hr />
+<p>速速去写论文！！！😵</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AE%89%E5%85%A8/" class="category-chain-item">安全</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AB%9E%E8%B5%9B/" class="category-chain-item">竞赛</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>GeekGame 2024 WriteUp</div>
+      <div>https://blog.bcb.pub/2024/10/20/ctf/geekgame2024/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BadCodeBuilder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/08/30/ctf/notes/length-extension-attack/" title="长度扩展攻击">
+                        <span class="hidden-mobile">长度扩展攻击</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
